@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/pokeTrackerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/poke_tracker"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/registerCatchTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/register_new_catch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokeTrackerTV" />
+
+    <TextView
+        android:id="@+id/nationalNumberTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/national_number"
+        app:layout_constraintEnd_toStartOf="@+id/nationalNumET"
+        app:layout_constraintTop_toTopOf="@+id/nationalNumET" />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="43dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="132dp"
+        android:text="@string/name"
+        app:layout_constraintEnd_toStartOf="@+id/nameET"
+        app:layout_constraintTop_toTopOf="@+id/nameET" />
+
+    <TextView
+        android:id="@+id/speciesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="120dp"
+        android:text="@string/species"
+        app:layout_constraintEnd_toStartOf="@+id/speciesET"
+        app:layout_constraintTop_toTopOf="@+id/speciesET" />
+
+    <TextView
+        android:id="@+id/genderTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/heightTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="140dp"
+        android:text="@string/height"
+        app:layout_constraintEnd_toStartOf="@+id/heightET"
+        app:layout_constraintTop_toTopOf="@+id/heightET" />
+
+    <TextView
+        android:id="@+id/weightTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="152dp"
+        android:text="@string/weight"
+        app:layout_constraintEnd_toStartOf="@+id/weightET"
+        app:layout_constraintTop_toTopOf="@+id/weightET" />
+
+    <TextView
+        android:id="@+id/levelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:text="@string/level"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/baseStatsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="320dp"
+        android:text="@string/base_stats"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hpTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="148dp"
+        android:text="@string/hp"
+        app:layout_constraintEnd_toStartOf="@+id/hpET"
+        app:layout_constraintTop_toTopOf="@+id/hpET" />
+
+    <TextView
+        android:id="@+id/attackTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="128dp"
+        android:text="@string/attack"
+        app:layout_constraintEnd_toStartOf="@+id/attackET"
+        app:layout_constraintTop_toTopOf="@+id/attackET" />
+
+    <TextView
+        android:id="@+id/defenseTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="120dp"
+        android:text="@string/defense"
+        app:layout_constraintEnd_toStartOf="@+id/defenseET"
+        app:layout_constraintTop_toTopOf="@+id/defenseET" />
+
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="194dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Glastrier"
+        android:inputType="text|textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/speciesET"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Wild Horse Pokemon"
+        android:inputType="text|textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nationalNumET"
+        android:layout_width="200dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:hint="896"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/hpET"
+        android:layout_width="182dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/attackET"
+        android:layout_width="183dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="136dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/defenseET"
+        android:layout_width="189dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="276dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/heightET"
+        android:layout_width="189dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="2.2m"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/weightET"
+        android:layout_width="178dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="424dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="800.0kg"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:text="Reset"
+        app:layout_constraintEnd_toStartOf="@+id/saveButton"
+        app:layout_constraintTop_toTopOf="@+id/saveButton" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="163dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/genderGroup"
+        android:layout_width="206dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/genderTV"
+        app:layout_constraintTop_toTopOf="@+id/genderTV">
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Female"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:text="Male"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/unknown"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:text="Unknown"
+            android:textSize="10sp" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
