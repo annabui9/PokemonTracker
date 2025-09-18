@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainConstraint), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         findViewListen();
+        //addUnitTextWatchers();
         rangeLevelSpinner();
         resetValues();
         twoDecimalPlaces();
@@ -318,6 +319,61 @@ public class MainActivity extends AppCompatActivity {
         return Toast.makeText(this, "Please complete all fields",
                 Toast.LENGTH_SHORT);
     }
+
+//    private void addUnitTextWatchers() {
+//        heightEdit.addTextChangedListener(new android.text.TextWatcher() {
+//            private boolean isEditing = false;
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+//
+//            @Override
+//            public void afterTextChanged(android.text.Editable s) {
+//                if (isEditing) return;
+//                isEditing = true;
+//
+//                String input = s.toString().replace("m", "").trim();
+//                if (!input.isEmpty()) {
+//                    double value = Double.parseDouble(input);
+//                    String formatted = String.format(Locale.getDefault(), "%.2f m", value);
+//                    heightEdit.setText(formatted);
+//                    heightEdit.setSelection(formatted.length() - 2);
+//                }
+//
+//                isEditing = false;
+//            }
+//        });
+//
+//        weightEdit.addTextChangedListener(new android.text.TextWatcher() {
+//            private boolean isEditing = false;
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+//
+//            @Override
+//            public void afterTextChanged(android.text.Editable s) {
+//                if (isEditing) return;
+//                isEditing = true;
+//
+//                String input = s.toString().replace("kg", "").trim();
+//                if (!input.isEmpty()) {
+//                    double value = Double.parseDouble(input);
+//                    String formatted = String.format(Locale.getDefault(), "%.2f kg", value);
+//                    weightEdit.setText(formatted);
+//                    weightEdit.setSelection(formatted.length() - 3);
+//                }
+//
+//                isEditing = false;
+//            }
+//        });
+//    }
+
 
 
 }
