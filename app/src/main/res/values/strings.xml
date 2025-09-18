@@ -13,4 +13,15 @@
     <string name="hp">HP</string>
     <string name="attack">Attack</string>
     <string name="defense">Defense</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="unknown">Unknown</string>
+    <string name="nameHint">letters, dots, and spaces</string>
+    <string name="speciesHint">letters and spaces</string>
+    <string name="nationalNumHint">between 0-1010</string>
+    <string name="hpAttackDefenseHint">ex) 123</string>
+    <string name="heightHint">in meters</string>
+    <string name="weightHint">in kilograms</string>
 </resources>
