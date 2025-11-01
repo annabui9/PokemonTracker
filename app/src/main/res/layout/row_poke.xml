@@ -1,0 +1,124 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/rowNatNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/national_numberLabel"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueNatNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nameLabel"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/speciesLabel"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/rowGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/speciesLabel_"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weightLabel"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/heightLabel"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/valueHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/levelLabel"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/valueLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowHP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hpLabel"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/valueHP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowAttack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/attackLabel"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/valueAttack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rowDefense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/defenseLabel"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/valueDefense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -131,6 +131,20 @@
         app:layout_constraintEnd_toStartOf="@+id/defenseET"
         app:layout_constraintTop_toTopOf="@+id/defenseET" />
 
+    <TextView
+        android:id="@+id/warningTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/this_pok_mon_already_exists_in_the_database"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
         android:id="@+id/nameET"
         android:layout_width="194dp"
@@ -232,7 +246,7 @@
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/reset"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintTop_toTopOf="@+id/saveButton" />
@@ -296,5 +310,15 @@
         android:text="Level"
         app:layout_constraintEnd_toStartOf="@+id/levelSpinnerID"
         app:layout_constraintTop_toTopOf="@+id/levelSpinnerID" />
+
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/view_poke_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/resetButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,9 @@
 package com.example.pokemontracker;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputFilter;
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     TextView hpText;
     TextView attackText;
     TextView defenseText;
+    TextView warningText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +63,23 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
-
         findViewListen();
-        //addUnitTextWatchers();
         rangeLevelSpinner();
         resetValues();
         twoDecimalPlaces();
+        viewButton();
+    }
+
+    private void resetTextColors() {
+        nationalNumText.setTextColor(getColor(android.R.color.black));
+        nameText.setTextColor(getColor(android.R.color.black));
+        speciesText.setTextColor(getColor(android.R.color.black));
+        genderText.setTextColor(getColor(android.R.color.black));
+        heightText.setTextColor(getColor(android.R.color.black));
+        weightText.setTextColor(getColor(android.R.color.black));
+        hpText.setTextColor(getColor(android.R.color.black));
+        attackText.setTextColor(getColor(android.R.color.black));
+        defenseText.setTextColor(getColor(android.R.color.black));
     }
 
     private void findViewListen (){
@@ -90,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         hpText = findViewById(R.id.hpTV);
         attackText = findViewById(R.id.attackTV);
         defenseText = findViewById(R.id.defenseTV);
+        warningText = findViewById(R.id.warningTV);
 
 
         saveButtonEdit.setOnClickListener(saveButtonListener);
@@ -148,13 +164,35 @@ public class MainActivity extends AppCompatActivity {
         genderRadioGroup.clearCheck();
         heightEdit.setText("2.2");
         weightEdit.setText("800.0");
+        levelSpinner.setSelection(0);
         hpEdit.setText("0");
         attackEdit.setText("0");
         defenseEdit.setText("0");
+        warningText.setVisibility(View.GONE);
+        resetTextColors();
     }
 
     private void checkInputs() {
         int errorCount = 0;
+
+        int nationalNumInt = 0;
+        String nameString = "";
+        String speciesString = "";
+        String genderString = "";
+        double heightDouble = 0;
+        double weightDouble = 0;
+        int hpInt = 0;
+        int attackInt = 0;
+        int defenseInt =0;
+
+        int levelInt = 0;
+        try {
+            String levelString = levelSpinner.getSelectedItem().toString();
+            levelInt = Integer.parseInt(levelString);
+        } catch (Exception e) {
+            levelInt = 1;
+        }
+
 
         String nationalNumString = nationalNumEdit.getText().toString().trim();
         if (nationalNumString.isEmpty()) {
@@ -162,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            int nationalNumInt = Integer.parseInt(nationalNumString);
+            nationalNumInt = Integer.parseInt(nationalNumString);
             if (nationalNumInt <= 0 || nationalNumInt >= 1010) {
                 nationalNumText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "National Number must be between 1 and 1010",
@@ -174,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        String nameString = nameEdit.getText().toString().trim();
+        nameString = nameEdit.getText().toString().trim();
         if (nameString.isEmpty()) {
             nameText.setTextColor(getColor(R.color.red));
             emptyField().show();
@@ -195,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        String speciesString = speciesEdit.getText().toString().trim();
+        speciesString = speciesEdit.getText().toString().trim();
         if (speciesString.isEmpty()) {
             speciesText.setTextColor(getColor(R.color.red));
             emptyField().show();
@@ -222,6 +260,12 @@ public class MainActivity extends AppCompatActivity {
             errorCount++;
         } else {
             genderText.setTextColor(getColor(R.color.black));
+
+            if (chosenGenderId == R.id.male){
+                genderString = "Male";
+            }else if(chosenGenderId == R.id.female){
+                genderString = "Female";
+            }
         }
 
         String heightString = heightEdit.getText().toString().trim();
@@ -230,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            Double heightDouble = Double.parseDouble(heightString);
+            heightDouble = Double.parseDouble(heightString);
             if (heightDouble < 0.2 || heightDouble > 169.99) {
                 heightText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "Height must be between 0.2 and 169.99",
@@ -247,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            Double weightDouble = Double.parseDouble(weightString);
+            weightDouble = Double.parseDouble(weightString);
             if (weightDouble < 0.1 || weightDouble > 992.7) {
                 weightText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "Weight must be between 0.1 and 992.7",
@@ -264,8 +308,8 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            Double hpDouble = Double.parseDouble(hpString);
-            if (hpDouble < 1 || hpDouble > 362) {
+            hpInt = Integer.parseInt(hpString);
+            if (hpInt < 1 || hpInt > 362) {
                 hpText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "HP must be between 1-362",
                         Toast.LENGTH_SHORT).show();
@@ -281,8 +325,8 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            Double attackDouble = Double.parseDouble(attackString);
-            if (attackDouble < 0 || attackDouble > 526) {
+            attackInt = Integer.parseInt(attackString);
+            if (attackInt < 0 || attackInt > 526) {
                 attackText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "Attack must be between 0-526",
                         Toast.LENGTH_SHORT).show();
@@ -298,8 +342,8 @@ public class MainActivity extends AppCompatActivity {
             emptyField().show();
             errorCount++;
         } else {
-            Double defenseDouble = Double.parseDouble(defenseString);
-            if (defenseDouble < 10 || defenseDouble > 614) {
+            defenseInt = Integer.parseInt(defenseString);
+            if (defenseInt < 10 || defenseInt > 614) {
                 defenseText.setTextColor(getColor(R.color.red));
                 Toast.makeText(this, "Defense must be between 10 and 614",
                         Toast.LENGTH_SHORT).show();
@@ -310,9 +354,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(errorCount == 0){
-            Toast.makeText(this, "Information has been stored in database!", Toast.LENGTH_SHORT).show();
+            warningText.setVisibility(View.GONE);
+            if(isDuplicate(nationalNumInt, nameString, speciesString, genderString, heightDouble,
+                    weightDouble, levelInt, hpInt, attackInt, defenseInt)){
+                warningText.setVisibility(View.VISIBLE);
+            }else{
+                updatePoke(nationalNumInt, nameString, speciesString, genderString, heightDouble,
+                        weightDouble, levelInt, hpInt, attackInt, defenseInt);
+            }
 
         }
+
     }
 
     private Toast emptyField(){
@@ -320,59 +372,84 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT);
     }
 
-//    private void addUnitTextWatchers() {
-//        heightEdit.addTextChangedListener(new android.text.TextWatcher() {
-//            private boolean isEditing = false;
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-//
-//            @Override
-//            public void afterTextChanged(android.text.Editable s) {
-//                if (isEditing) return;
-//                isEditing = true;
-//
-//                String input = s.toString().replace("m", "").trim();
-//                if (!input.isEmpty()) {
-//                    double value = Double.parseDouble(input);
-//                    String formatted = String.format(Locale.getDefault(), "%.2f m", value);
-//                    heightEdit.setText(formatted);
-//                    heightEdit.setSelection(formatted.length() - 2);
-//                }
-//
-//                isEditing = false;
-//            }
-//        });
-//
-//        weightEdit.addTextChangedListener(new android.text.TextWatcher() {
-//            private boolean isEditing = false;
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-//
-//            @Override
-//            public void afterTextChanged(android.text.Editable s) {
-//                if (isEditing) return;
-//                isEditing = true;
-//
-//                String input = s.toString().replace("kg", "").trim();
-//                if (!input.isEmpty()) {
-//                    double value = Double.parseDouble(input);
-//                    String formatted = String.format(Locale.getDefault(), "%.2f kg", value);
-//                    weightEdit.setText(formatted);
-//                    weightEdit.setSelection(formatted.length() - 3);
-//                }
-//
-//                isEditing = false;
-//            }
-//        });
-//    }
+    private boolean isDuplicate(int nationalNum, String name, String species, String gender,
+                                double height,double weight, int level, int hp, int attack, int defense){
+        String selection =
+                PokeContentProvider.COL_NATNUM + "=? AND " +
+                        PokeContentProvider.COL_NAME + "=? AND " +
+                        PokeContentProvider.COL_SPECIES + "=? AND " +
+                        PokeContentProvider.COL_GENDER + "=? AND " +
+                        PokeContentProvider.COL_HEIGHT + "=? AND " +
+                        PokeContentProvider.COL_WEIGHT + "=? AND " +
+                        PokeContentProvider.COL_LEVEL + "=? AND " +
+                        PokeContentProvider.COL_HP + "=? AND " +
+                        PokeContentProvider.COL_ATTACK + "=? AND " +
+                        PokeContentProvider.COL_DEFENSE + "=?";
+
+        String[] selectionArgs = {
+                String.valueOf(nationalNum),
+                name,
+                species,
+                gender,
+                String.valueOf(height),
+                String.valueOf(weight),
+                String.valueOf(level),
+                String.valueOf(hp),
+                String.valueOf(attack),
+                String.valueOf(defense)
+        };
+
+        Cursor c = getContentResolver().query(PokeContentProvider.CONTENT_URI, null,
+                selection, selectionArgs, null);
+
+        boolean isDuplicate = (c != null && c.getCount() >0);
+        if(c != null){
+            c.close();
+        }
+
+        return isDuplicate;
+    }
+
+    private void updatePoke(int nationalNum, String name, String species, String gender,
+                          double height,double weight, int level, int hp, int attack, int defense){
+        ContentValues values = new ContentValues();
+        values.put(PokeContentProvider.COL_NATNUM, nationalNum);
+        values.put(PokeContentProvider.COL_NAME, name);
+        values.put(PokeContentProvider.COL_SPECIES, species);
+        values.put(PokeContentProvider.COL_GENDER, gender);
+        values.put(PokeContentProvider.COL_HEIGHT, height);
+        values.put(PokeContentProvider.COL_WEIGHT, weight);
+        values.put(PokeContentProvider.COL_LEVEL, level);
+        values.put(PokeContentProvider.COL_HP, hp);
+        values.put(PokeContentProvider.COL_ATTACK, attack);
+        values.put(PokeContentProvider.COL_DEFENSE, defense);
+
+        Uri newUri = getContentResolver().insert(PokeContentProvider.CONTENT_URI, values);
+
+        if(newUri != null){
+            Toast.makeText(this, "Information has been stored in database!", Toast.LENGTH_SHORT).show();
+            resetValues();
+        }else {
+            Toast.makeText(this, "Could not save information", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void viewButton(){
+        Button viewListButton = findViewById(R.id.viewButton);
+        viewListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PokeListView.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+
 
 
 
